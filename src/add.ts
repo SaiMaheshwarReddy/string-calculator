@@ -23,6 +23,7 @@ export function add(str: string): number {
   // temp variable to accumulate current digits Eg: //;\n33;4 for this it stores 33
   let currNumber = "";
   let sum = 0;
+  let negativeNumbers: string = "";
   for (let i = 0; i < inputNumStr.length; i++) {
     let isDelimiter = false;
     // find delimiter and skip the loop to the end of delimiter
@@ -37,11 +38,14 @@ export function add(str: string): number {
     // if delimiter was found add currNumber to the sum
     if (isDelimiter && currNumber !== "") {
       const num = Number(currNumber);
+      if (num < 0) {
+        negativeNumbers += " " + currNumber;
+      }
       sum += num;
       currNumber = "";
     } else {
       // if current char is not part of delimiter store it in temp variable currNumber
-      if (!isNaN(Number(inputNumStr[i]))) {
+      if (inputNumStr[i] === "-" || !isNaN(Number(inputNumStr[i]))) {
         currNumber += inputNumStr[i];
       } else {
         throw new Error("Invalid input");
@@ -51,7 +55,14 @@ export function add(str: string): number {
   // after the last delimiter the currentNumber can be added to sum
   if (currNumber !== "") {
     const num = Number(currNumber);
+    if (num < 0) {
+      negativeNumbers += " " + currNumber;
+    }
     sum += num;
+  }
+
+  if (negativeNumbers.length > 0) {
+    throw new Error(`negative numbers no allowed${negativeNumbers}`);
   }
 
   return sum;
