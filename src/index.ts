@@ -6,6 +6,14 @@ const outputEl = document.getElementById("output") as HTMLHeadingElement;
 
 btn.addEventListener("click", () => {
   console.log("dsd");
-  const output = add(input.value);
-  outputEl.innerText = String(output);
+  try {
+    const output = add(input.value);
+    outputEl.style.color = "black";
+    outputEl.innerText = "Output: " + String(output);
+  } catch (err) {
+    if (err instanceof Error) {
+      outputEl.style.color = "red";
+      outputEl.innerText = "Error: " + String(err.message);
+    }
+  }
 });

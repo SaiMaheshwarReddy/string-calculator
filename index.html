@@ -2,18 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <title>String Calculator</title>
   </head>
   <body>
-    <div>
-      <div>
+    <section>
+      <h1>String Calculator</h1>
+      <div class="container">
         <input id="input" />
+
+        <button id="btn">Calculate</button>
       </div>
-      <button id="btn">calculate</button>
       <h2 id="output"></h2>
-    </div>
+    </section>
     <script type="module" src="/src/index.ts"></script>
   </body>
 </html>
