@@ -1,12 +1,13 @@
 {
-  "name": "vite-vanilla-ts-lib-starter",
+  "name": "string-calculator",
   "private": true,
   "version": "0.0.4",
-  "module": "./dist/vite-vanilla-ts-lib-starter.js",
+  "module": "./dist/string-calculator.js",
+  "homepage": "https://SaiMaheshwarReddy.github.io/string-calculator/",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/vite-vanilla-ts-lib-starter.js"
+      "import": "./dist/string-calculator.js"
     },
     "./dist/": {
       "import": "./dist/"
@@ -15,7 +16,10 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite --host",
-    "build": "rimraf build/**/* && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts && copyfiles ./package.json build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "build": "vite build",
+    "buildewe": "rimraf build/**/* && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts && copyfiles ./package.json build",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "lint:scripts": "eslint . --ext .ts",
@@ -37,6 +41,7 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "gh-pages": "^6.2.0",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.7",
     "postcss": "^8.4.40",
